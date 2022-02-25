@@ -13,4 +13,9 @@ Catch my talk featuring Coeus here! (add link pls)
   * parse SID/GUID
 * LAPSSweep
 * ACL Enum
-* GPO Enum  
+  * takes obj as param 
+* GPO Enum
+  * fetch all
+  * all properties
+  * specific properties
+  * return names     
