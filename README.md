@@ -13,6 +13,7 @@ Catch my talk featuring Coeus here! (add link pls)
   * parse SID/GUID
 * LAPSSweep
 * ACL Enum
+  * https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf 
   * takes obj as param 
 * GPO Enum
   * fetch all
