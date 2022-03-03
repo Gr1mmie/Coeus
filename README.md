@@ -8,7 +8,6 @@ Catch my talk featuring Coeus here! (add link pls)
 * Give option to set/change SearchScope 
 * Users
   * no passwd req'd 
-  * add opt to return group membership
 * ObjPropery
   * parse SID/GUID
 * LAPSSweep
