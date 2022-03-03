@@ -15,6 +15,9 @@ namespace Coeus.Commands
 
         public override string CommandDesc => "Return users part of specified group";
 
+        public override string CommandUsage => "[*] Usage: GroupMembers [group name]" +
+            "\n\t group name - group name to return members of";
+
         public override string CommandExec(string[] args)
         {
             StringBuilder outData = new StringBuilder();

@@ -60,6 +60,14 @@ namespace Coeus.Utils
             searcher.SearchScope = scope;
         }
 
+        public static void FilterSet(DirectorySearcher searcher, string filter, SearchScope scope, string[] Properties) {
+            searcher.Filter = filter;
+            searcher.SearchScope = scope;
+            for (int i = 0; i < Properties.Length; i++) {
+                searcher.PropertiesToLoad.Add(Properties[i]);
+            }
+        }
+
     }
 
     public class Init

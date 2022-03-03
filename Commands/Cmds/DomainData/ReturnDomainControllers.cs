@@ -14,6 +14,8 @@ namespace Coeus.Commands
 
         public override string CommandDesc => "Return all domain controllers";
 
+        public override string CommandUsage => "[*] Usage: DomainControllers";
+
         public override string CommandExec(string[] args)
         {
             StringBuilder outData = new StringBuilder();

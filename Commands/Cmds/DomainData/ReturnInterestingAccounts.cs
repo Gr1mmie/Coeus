@@ -15,15 +15,15 @@ namespace Coeus.Commands
 
         public override string CommandDesc => "Returns potentially interesting accounts";
 
+        public override string CommandUsage => "[*] Usage: InterestingAccounts";
+
         public override string CommandExec(string[] args)
         {
             StringBuilder outData = new StringBuilder();
 
-            string[] CNArr = new string[] { "*test*", "*dev*", "*prod*", "*svc*", "*admin*", "*adm*" };
-
             string CNs = null;
 
-            foreach (string cn in CNArr) { CNs = $"(cn={cn})"; }
+            foreach (string cn in interestingCNs) { CNs += $"(cn={cn})"; }
 
             outData.AppendLine($"[*] Locating potentially interesting accounts in the {DomainUtils.CurrentDomain(searcher)} domain");
             UI.FilterSet(searcher, $"(&(samaccounttype=805306368)(|{CNs}))", scope);

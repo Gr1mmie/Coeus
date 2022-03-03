@@ -15,8 +15,7 @@ namespace Coeus.Utils
         {
             public static string CurrentDomain(DirectorySearcher searcher) { return (string)searcher.SearchRoot.Properties["dc"][0]; }
 
-            public static Int64 ConvertLargeIntegerToInt64(object largeInteger)
-            {
+            public static Int64 ConvertLargeIntegerToInt64(object largeInteger) {
                 Int32 highPart = (Int32)largeInteger.GetType().InvokeMember("HighPart", BindingFlags.GetProperty, null, largeInteger, null);
                 Int32 lowPart = (Int32)largeInteger.GetType().InvokeMember("LowPart", BindingFlags.GetProperty, null, largeInteger, null);
 

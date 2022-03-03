@@ -11,13 +11,21 @@ namespace Coeus.Commands
 {
     public class DescriptionHunter : Command
     {
-        private string desc { get; set; } = "*";
+        private string desc { get; set; }
         public override string CommandName => "Descriptions";
 
         public override string CommandDesc => "Return descriptions";
 
+        public override string CommandUsage => "[*] Usage: Descriptions <desc>\n\t desc - description to search for";
+
         public override string CommandExec(string[] args)
         {
+            if (args is null) { desc = "*"; }
+            else {
+                if (args.Length == 2) { desc = args[1]; }
+                if (args.Length != 2) { throw new CoeusException("[*] Usage: Descriptions <desc>\n"); }
+            }
+
             StringBuilder outData = new StringBuilder();
 
             outData.AppendLine($"[*] Searching decriptions in {DomainUtils.CurrentDomain(searcher)} domain matching '{desc}'");

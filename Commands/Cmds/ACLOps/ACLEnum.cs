@@ -13,6 +13,7 @@ namespace Coeus.Commands
         public override string CommandName => "ACLEnum";
 
         public override string CommandDesc => "Return ACL for specified object";
+        public override string CommandUsage => "[*] Usage: ACLEnum [obj]";
 
         public override string CommandExec(string[] args)
         {

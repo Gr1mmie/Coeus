@@ -14,6 +14,8 @@ namespace Coeus.Commands
 
         public override string CommandDesc => "Return domain password policy";
 
+        public override string CommandUsage => "[*] Usage: PasswdPolicy";
+
         public override string CommandExec(string[] args)
         {
             StringBuilder outData = new StringBuilder();

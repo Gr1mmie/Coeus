@@ -11,7 +11,8 @@ namespace Coeus.Commands
     public class GPOHunter : Command
     {
         public override string CommandName  => "GPOHunter";
-        public override string CommandDesc  => "Return all GPOs"; 
+        public override string CommandDesc  => "Return all GPOs";
+        public override string CommandUsage => "[*] Usage: GPOHunter";
 
         public override string CommandExec(string[] args)
         {
