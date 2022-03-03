@@ -8,7 +8,6 @@ Catch my talk featuring Coeus here! (add link pls)
 * Give option to set/change SearchScope 
 * Users
   * no passwd req'd 
-  * add opt to return group membership
 * ObjPropery
   * parse SID/GUID
 * LAPSSweep
@@ -20,5 +19,5 @@ Catch my talk featuring Coeus here! (add link pls)
   * all properties
   * specific properties
   * return names     
-* DCCync
+* DCSync
   * search for DS-Replication-Get-Changes, DS-Replication-Get-Changes-All, DS-Replication-Get-Changes-In-Filtered-Set  
