@@ -15,9 +15,12 @@ Catch my talk featuring Coeus here! (add link pls)
   * https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf 
   * takes obj as param 
 * GPO Enum
-  * fetch all
-  * all properties
+  * ~~fetch all~~
+  * ~~all properties~~
   * specific properties
-  * return names     
+  * ~~return names~~
+  * correctly return byte[] entries (objGUID)
 * DCSync
   * search for DS-Replication-Get-Changes, DS-Replication-Get-Changes-All, DS-Replication-Get-Changes-In-Filtered-Set  
+* Misc
+  * create method to convert and return SID/GIUD entries in extensions 
