@@ -16,7 +16,7 @@ namespace Coeus.Commands
 
         public override string CommandExec(string[] args)
         {
-            if (args != null) { throw new CoeusException("[*] Usage: GPOHunter"); }
+            if (args != null) { throw new CoeusException("[*] Usage: GPOHunter\n"); }
 
             StringBuilder outData = new StringBuilder();
 
