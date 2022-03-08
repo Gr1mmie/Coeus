@@ -29,7 +29,7 @@ namespace Coeus.Commands
             if (args != null) {
                 if (args.Length > 3) { throw new CoeusException("[*] Usage: AllGroups <group obj cn> <nondefaultGroups>\n"); }
                 if ((args.Length == 2 || args.Length == 3) && args[1].ToLower() != "ndg") { addFilter = $"(cn={args[1]})"; }
-                if (args.Any("ndG".ToLower().Contains)) { NonDefaultGroups = true; }
+                if (args.Any("ndG".Contains)) { NonDefaultGroups = true; }
             }
 
             StringBuilder outData = new StringBuilder();

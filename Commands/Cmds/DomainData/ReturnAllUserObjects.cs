@@ -33,10 +33,10 @@ namespace Coeus.Commands
             if (args != null) {
                 if (args.Length > 3) { throw new CoeusException("[*] Usage: AllUsers <user obj cn> <nondefaultUsers/enabled/disabled/noPasswdExpire>"); }
 
-                if (args.Any("nPE".ToLower().Contains)) { addFilter += "(userAccountControl:1.2.840.113556.1.4.803:=65536)"; }
-                if (args.Any("enabled".ToLower().Contains) && !args.Any("disabled".ToLower().Contains)) { addFilter += "(!(userAccountControl:1.2.840.113556.1.4.803:=2))"; }
-                if (args.Any("disabled".ToLower().Contains) && !args.Any("disabled".ToLower().Contains)) { addFilter += "(userAccountControl:1.2.840.113556.1.4.803:=2)"; }
-                if (args.Any("nPR".ToLower().Contains)) { addFilter += ""; }
+                if (args.Any("nPE".Contains)) { addFilter += "(userAccountControl:1.2.840.113556.1.4.803:=65536)"; }
+                if (args.Any("enabled".Contains) && !args.Any("disabled".ToLower().Contains)) { addFilter += "(!(userAccountControl:1.2.840.113556.1.4.803:=2))"; }
+                if (args.Any("disabled".Contains) && !args.Any("disabled".ToLower().Contains)) { addFilter += "(userAccountControl:1.2.840.113556.1.4.803:=2)"; }
+                if (args.Any("nPR".Contains)) { addFilter += ""; }
                 if (args.Any("admins".Contains)) { addFilter += "(admincount=1)"; }
                 if (args.Any("ndU".ToLower().Contains)) { NonDefaultUsers = true; }
                 if ((args.Length == 2 || args.Length == 3) && args[1].ToLower() != "true") { addFilter = $"(cn={args[1]})"; }

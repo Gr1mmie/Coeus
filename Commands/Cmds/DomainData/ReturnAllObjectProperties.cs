@@ -15,7 +15,7 @@ namespace Coeus.Commands
         public override string CommandName => "AllObjProperties";
         public override string CommandDesc => "Return all properties for a specified object";
 
-        public override string CommandUsage => "[*] Usage: AllObjProperties <obj cn>" +
+        public override string CommandUsage => "[*] Usage: AllObjProperties [obj cn]" +
             "\n\t obj cn - object canonical name to query (positional)";
 
         public override string CommandExec(string[] args)

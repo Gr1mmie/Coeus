@@ -23,9 +23,8 @@ namespace Coeus.Commands
 
             UI.FilterSet(searcher, "(&(objectCategory=user)(!(samAccountName=krbtgt)(servicePrincipalName=*)))", scope);
 
-            if (searcher.FindAll() != null)
-            {
-                outData.AppendLine("[+] Locating Kerberaotable users: ");
+            if (searcher.FindAll() != null) {
+                outData.AppendLine("[+] Locating Kerberoastable users: ");
                 UI.SearchBanner(searcher.Filter);
                 foreach (SearchResult acc in searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
             }
@@ -34,8 +33,7 @@ namespace Coeus.Commands
 
             UI.FilterSet(searcher, "(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=4194304))", scope);
 
-            if (searcher.FindAll() != null)
-            {
+            if (searcher.FindAll() != null) {
                 outData.AppendLine("[+] Locating AS-REPRoastable users ");
                 UI.SearchBanner(searcher.Filter);
                 foreach (SearchResult acc in searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
