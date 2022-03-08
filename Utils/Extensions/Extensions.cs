@@ -1,6 +1,7 @@
 ﻿using System;
-using System.DirectoryServices;
 using System.Reflection;
+using System.DirectoryServices;
+using System.Security.Principal;
 
 using static System.Console;
 
@@ -21,6 +22,13 @@ namespace Coeus.Utils
 
                 return ((Int64)highPart) << 32 + lowPart;
             }
+
+            public static Guid ConvertToGUID(ResultPropertyValueCollection Property) { return new Guid((byte[])Property[0]); }
+
+            public static SecurityIdentifier ConvertToSID(ResultPropertyValueCollection Property) {
+                return new SecurityIdentifier((byte[])Property[0], 0);
+            }
+
         }
     }
 }

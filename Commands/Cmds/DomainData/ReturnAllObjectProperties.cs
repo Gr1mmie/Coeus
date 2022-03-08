@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.DirectoryServices;
 
 using Coeus.Utils;
 using Coeus.Models;
@@ -15,7 +14,7 @@ namespace Coeus.Commands
         public override string CommandName => "AllObjProperties";
         public override string CommandDesc => "Return all properties for a specified object";
 
-        public override string CommandUsage => "[*] Usage: AllObjProperties [obj cn]" +
+        public override string CommandUsage => "[*] Usage: AllObjProperties <obj cn>" +
             "\n\t obj cn - object canonical name to query (positional)";
 
         public override string CommandExec(string[] args)
@@ -33,7 +32,13 @@ namespace Coeus.Commands
             if (_out is null) { throw new CoeusException($"[-] {obj} not a valid CN\n"); }
 
             outData.AppendLine($"[*] Search Filter: {searcher.Filter}\n[*] Object Path: {_out.Path}\n");
-            foreach (var property in searcher.FindOne().Properties.PropertyNames) { outData.AppendLine($"{property,-30}: {searcher.FindOne().Properties[(string)property][0]}"); }
+            foreach (var property in searcher.FindOne().Properties.PropertyNames) {
+                if (property.ToString() == "objectguid") {
+                    outData.AppendLine($"{property,-30}: {DomainUtils.ConvertToGUID(searcher.FindOne().Properties[(string)property])}");
+                } else if (property.ToString() == "objectsid") {
+                    outData.AppendLine($"{property,-30}: {DomainUtils.ConvertToSID(searcher.FindOne().Properties[(string)property])}");
+                } else { outData.AppendLine($"{property,-30}: {searcher.FindOne().Properties[(string)property][0]}"); }
+            }
 
             return outData.ToString();
         }
