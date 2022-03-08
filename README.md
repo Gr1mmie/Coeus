@@ -7,7 +7,7 @@ Catch my talk featuring Coeus here! (add link pls)
 ## To-Do
 * Give option to set/change SearchScope 
 * Users
-  * no passwd req'd 
+  * ~~no passwd req'd~~ 
 * ObjPropery
   * parse SID/GUID
 * LAPSSweep
@@ -17,7 +17,7 @@ Catch my talk featuring Coeus here! (add link pls)
 * GPO Enum
   * ~~fetch all~~
   * ~~all properties~~
-  * specific properties
+  * ~~specific properties~~
   * ~~return names~~
   * correctly return byte[] entries (objGUID)
 * DCSync
