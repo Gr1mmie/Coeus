@@ -20,10 +20,10 @@ namespace Coeus.Commands.Utils
             Init.InitAll();
 
             _out.AppendLine("\nCommands\n____________\n");
-            foreach (Command cmd in _commands) { _out.AppendLine($"{cmd.CommandName,-25} {cmd.CommandDesc}"); }
+            foreach (Command cmd in Lists._commands) { _out.AppendLine($"{cmd.CommandName,-25} {cmd.CommandDesc}"); }
 
             _out.AppendLine("\nUtils\n____________\n");
-            foreach (Util util in _utils) { _out.AppendLine($"{util.UtilName,-25} {util.UtilDesc}"); }
+            foreach (Util util in Lists._utils) { _out.AppendLine($"{util.UtilName,-25} {util.UtilDesc}"); }
 
             return _out.ToString();
         }

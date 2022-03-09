@@ -31,10 +31,10 @@ namespace Coeus.Commands
 
                 StringBuilder outData = new StringBuilder();
                 
-                UI.FilterSet(searcher, $"(cn={ObjName})", scope);
+                UI.FilterSet(DS.searcher, $"(cn={ObjName})", DS.scope);
 
-                UI.SearchBanner(searcher.Filter);
-                foreach (SearchResult obj in searcher.FindAll()) {
+                UI.SearchBanner(DS.searcher.Filter);
+                foreach (SearchResult obj in DS.searcher.FindAll()) {
                     cProp = obj.Properties[$"{ObjProp}"];
                     if (ObjProp == "objectguid") { outData.AppendLine($"{DomainUtils.ConvertToGUID(cProp)}"); }
                     else if (ObjProp == "objectsid") { outData.AppendLine($"{DomainUtils.ConvertToSID(cProp)}"); }

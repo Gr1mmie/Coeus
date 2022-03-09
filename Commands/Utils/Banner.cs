@@ -24,7 +24,7 @@ namespace Coeus.Commands.Utils
                 @" / ^ ( (_) > _)| |_| ( () )  " + "\n" +
                 @"/_/ \_\___/\___)\___/ \__/   " + "\n" +
                 @"     Author: Grimmie         " + "\n" +
-                $"       Ver: {Ver}            " + "\n"
+                $"       Ver: {Misc.Ver}            " + "\n"
                 );
 
             return outData.ToString();

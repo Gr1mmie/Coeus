@@ -50,7 +50,6 @@
     <Compile Include="Commands\Cmds\AbuseEnum\SPNSnipe.cs" />
     <Compile Include="Commands\Cmds\ACLOps\ACLEnum.cs" />
     <Compile Include="Commands\Cmds\CredSweep\LAPS\LAPSSweep.cs" />
-    <Compile Include="Commands\Cmds\DNSStuffs\DNSStuffs.cs" />
     <Compile Include="Commands\Cmds\DomainData\CustomFilter.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnAllComputerObjects.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnAllGroupObjects.cs" />
@@ -65,6 +64,7 @@
     <Compile Include="Commands\Cmds\DomainData\ReturnObjProperty.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnPasswdPolicies.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnPrinters.cs" />
+    <Compile Include="Commands\Cmds\DomainData\RootDSE.cs" />
     <Compile Include="Commands\Cmds\GPOOps\GPOHunter.cs" />
     <Compile Include="Commands\Cmds\GPOOps\GPOQuery.cs" />
     <Compile Include="Commands\Utils\Authenticate.cs" />

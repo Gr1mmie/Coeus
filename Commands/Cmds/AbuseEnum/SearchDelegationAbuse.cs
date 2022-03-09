@@ -22,22 +22,22 @@ namespace Coeus.Commands
         {
             StringBuilder outData = new StringBuilder();
 
-            UI.FilterSet(searcher, "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=524288))", scope);
+            UI.FilterSet(DS.searcher, "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=524288))", DS.scope);
 
-            if (searcher.FindAll() != null) {
+            if (DS.searcher.FindAll() != null) {
                 outData.AppendLine("[*] Located machines trusted for delegation (uncontrained delegation)");
-                UI.SearchBanner(searcher.Filter);
-                foreach (SearchResult acc in searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
+                UI.SearchBanner(DS.searcher.Filter);
+                foreach (SearchResult acc in DS.searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
             }
 
             outData.AppendLine();
 
-            UI.FilterSet(searcher, "(userAccountControl:1.2.840.113556.1.4.803:=1048576)", scope);
+            UI.FilterSet(DS.searcher, "(userAccountControl:1.2.840.113556.1.4.803:=1048576)", DS.scope);
 
-            if (searcher.FindAll() != null) {
+            if (DS.searcher.FindAll() != null) {
                 outData.AppendLine("[*] Locateing machines not trusted for delegation (constrained delegation) ");
-                UI.SearchBanner(searcher.Filter);
-                foreach (SearchResult acc in searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
+                UI.SearchBanner(DS.searcher.Filter);
+                foreach (SearchResult acc in DS.searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
             }
 
             // RCBD -> https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1#L5435

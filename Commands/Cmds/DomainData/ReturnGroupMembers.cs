@@ -24,7 +24,7 @@ namespace Coeus.Commands
 
             StringBuilder outData = new StringBuilder();
 
-            string domainPath = RootDSE.Properties["defaultNamingContext"][0].ToString();
+            string domainPath = DS.RootDSE.Properties["defaultNamingContext"][0].ToString();
 
             DirectoryEntry groupEntry = new DirectoryEntry($"LDAP://CN={group},CN=Users,{domainPath}");
 

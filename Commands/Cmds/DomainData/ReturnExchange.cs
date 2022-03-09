@@ -21,10 +21,10 @@ namespace Coeus.Commands
             StringBuilder outData = new StringBuilder();
 
             outData.AppendLine($"[*] Searching for exchange servers");
-            UI.FilterSet(searcher, "(objectcategory=msExchExchangeServer)", scope);
+            UI.FilterSet(DS.searcher, "(objectcategory=msExchExchangeServer)", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
-            foreach (SearchResult svr in searcher.FindAll()) { outData.AppendLine($"{svr.Properties["CN"][0],-25}: {svr.Path}"); }
+            UI.SearchBanner(DS.searcher.Filter);
+            foreach (SearchResult svr in DS.searcher.FindAll()) { outData.AppendLine($"{svr.Properties["CN"][0],-25}: {svr.Path}"); }
 
             return outData.ToString();
         }

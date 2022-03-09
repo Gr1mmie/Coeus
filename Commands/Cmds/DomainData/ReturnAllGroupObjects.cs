@@ -33,19 +33,19 @@ namespace Coeus.Commands
             }
 
             StringBuilder outData = new StringBuilder();
-            outData.AppendLine($"[*] Returning all group objects in {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, $"(&(samaccounttype=268435456){addFilter})", scope);
+            outData.AppendLine($"[*] Returning all group objects in {DomainUtils.CurrentDomain(DS.searcher)} domain");
+            UI.FilterSet(DS.searcher, $"(&(samaccounttype=268435456){addFilter})", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
+            UI.SearchBanner(DS.searcher.Filter);
             if (NonDefaultGroups) {
-                foreach (SearchResult group in searcher.FindAll()) {
-                    if (!(defaultGroups.Any(group.Properties["CN"][0].ToString().Contains))) {
+                foreach (SearchResult group in DS.searcher.FindAll()) {
+                    if (!(Arrays.defaultGroups.Any(group.Properties["CN"][0].ToString().Contains))) {
                         count += 1;
                         outData.AppendLine($"{group.Properties["CN"][0],-25} : {group.Path} ");
                     }
                 }
             } else {
-                foreach (SearchResult group in searcher.FindAll()) {
+                foreach (SearchResult group in DS.searcher.FindAll()) {
                     count += 1;
                     outData.AppendLine($"{group.Properties["CN"][0],-40} : {group.Path}");
                 }

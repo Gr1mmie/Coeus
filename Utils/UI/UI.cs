@@ -22,7 +22,7 @@ namespace Coeus.Utils
                 @" / ^ ( (_) > _)| |_| ( () )  " + "\n" +
                 @"/_/ \_\___/\___)\___/ \__/   " + "\n" +
                 @"     Author: Grimmie         " + "\n" +
-                $"       Ver: {Ver}            " + "\n"   
+                $"       Ver: {Misc.Ver}            " + "\n"   
                 );
         }
 
@@ -36,8 +36,8 @@ namespace Coeus.Utils
 
                 Init.InitAll();
 
-                Command cmd = _commands.FirstOrDefault(cCmd => cCmd.CommandName.Equals(input.Split(' ')[0], StringComparison.InvariantCultureIgnoreCase));
-                Util util = _utils.FirstOrDefault(cUtil => cUtil.UtilName.Equals(input.Split(' ')[0], StringComparison.InvariantCultureIgnoreCase));
+                Command cmd = Lists._commands.FirstOrDefault(cCmd => cCmd.CommandName.Equals(input.Split(' ')[0], StringComparison.InvariantCultureIgnoreCase));
+                Util util = Lists._utils.FirstOrDefault(cUtil => cUtil.UtilName.Equals(input.Split(' ')[0], StringComparison.InvariantCultureIgnoreCase));
                 if (cmd is null && util is null) { throw new CoeusException($"[-] Command {input} is invalid"); }
 
                 if (input.Contains(' ')) { opts = input.Split(' '); }
@@ -74,15 +74,15 @@ namespace Coeus.Utils
     {
 
         public static void InitAll() {
-            if (_commands.Count == 0) { CommandInit(); }
-            if (_utils.Count == 0) { UtilInit(); }
+            if (Lists._commands.Count == 0) { CommandInit(); }
+            if (Lists._utils.Count == 0) { UtilInit(); }
         }
 
         public static void CommandInit() {
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {
                 if (type.IsSubclassOf(typeof(Command))) {
                     Command function = Activator.CreateInstance(type) as Command;
-                    _commands.Add(function);
+                    Lists._commands.Add(function);
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace Coeus.Utils
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {
                 if (type.IsSubclassOf(typeof(Util))) {
                     Util function = Activator.CreateInstance(type) as Util;
-                    _utils.Add(function);
+                    Lists._utils.Add(function);
                 }
             }
         }

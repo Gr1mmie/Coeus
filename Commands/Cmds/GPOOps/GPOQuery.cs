@@ -33,18 +33,18 @@ namespace Coeus.Commands
 
                 StringBuilder outData = new StringBuilder();
 
-                UI.FilterSet(searcher, $"(&(ObjectCategory=groupPolicyContainer)(cn={'{' + GPOId + '}'}))", scope);
+                UI.FilterSet(DS.searcher, $"(&(ObjectCategory=groupPolicyContainer)(cn={'{' + GPOId + '}'}))", DS.scope);
 
                 UI.SearchBanner($"(&(ObjectCategory = groupPolicyContainer)(cn={ '{' + GPOId + '}'}))");
                 if (Prop == null) {
-                    foreach (var GPOProp in searcher.FindOne().Properties.PropertyNames) {
-                        cProp = searcher.FindOne().Properties[$"{GPOProp}"];
+                    foreach (var GPOProp in DS.searcher.FindOne().Properties.PropertyNames) {
+                        cProp = DS.searcher.FindOne().Properties[$"{GPOProp}"];
                         if (GPOProp.ToString() == "objectguid") {
                             outData.AppendLine($"{GPOProp,-30}: {DomainUtils.ConvertToGUID(cProp)}");
                         } else { outData.AppendLine($"{GPOProp,-30}: {cProp[0]}"); }
                     }
                 } else if (Prop != null && Prop != "") {
-                    foreach (SearchResult GPOProp in searcher.FindAll()) {
+                    foreach (SearchResult GPOProp in DS.searcher.FindAll()) {
                         cProp = GPOProp.Properties[$"{Prop}"];
                         if (Prop == "objectguid") {
                             outData.AppendLine($"{DomainUtils.ConvertToGUID(cProp)}");

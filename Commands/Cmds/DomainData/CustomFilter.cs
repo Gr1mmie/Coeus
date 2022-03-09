@@ -22,9 +22,9 @@ namespace Coeus.Commands
 
             string Filter = args[1];
 
-            UI.FilterSet(searcher, Filter, scope);
+            UI.FilterSet(DS.searcher, Filter, DS.scope);
 
-            foreach (SearchResult result in searcher.FindAll()) { outData.AppendLine($"{result}"); }
+            foreach (SearchResult result in DS.searcher.FindAll()) { outData.AppendLine($"{result}"); }
 
             return outData.ToString();
         }

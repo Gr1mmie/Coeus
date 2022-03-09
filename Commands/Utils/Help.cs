@@ -23,7 +23,7 @@ namespace Coeus.Commands
 
             Init.InitAll();
 
-            Command cmd = _commands.FirstOrDefault(cCmd => cCmd.CommandName.Equals(qCmd, StringComparison.InvariantCultureIgnoreCase));
+            Command cmd = Lists._commands.FirstOrDefault(cCmd => cCmd.CommandName.Equals(qCmd, StringComparison.InvariantCultureIgnoreCase));
             if (cmd is null) { throw new CoeusException($"[-] Command {qCmd} is invalid\n"); }
 
             outData.AppendLine(cmd.CommandUsage);

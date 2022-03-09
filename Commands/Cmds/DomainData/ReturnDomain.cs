@@ -15,7 +15,7 @@ namespace Coeus.Commands
 
         public override string CommandExec(string[] args)
         {
-            return $"[*] Current domain: {DomainUtils.CurrentDomain(searcher)}";
+            return $"[*] Current domain: {DomainUtils.CurrentDomain(DS.searcher)}";
         }
     }
 }

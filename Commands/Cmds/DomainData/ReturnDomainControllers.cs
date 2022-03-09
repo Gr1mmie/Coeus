@@ -20,11 +20,11 @@ namespace Coeus.Commands
         {
             StringBuilder outData = new StringBuilder();
 
-            outData.AppendLine($"[*] Returning all domain controllers in the {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, "(&(objectcategory=computer)(useraccountcontrol:1.2.840.113556.1.4.803:=8192))", scope);
+            outData.AppendLine($"[*] Returning all domain controllers in the {DomainUtils.CurrentDomain(DS.searcher)} domain");
+            UI.FilterSet(DS.searcher, "(&(objectcategory=computer)(useraccountcontrol:1.2.840.113556.1.4.803:=8192))", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
-            foreach (SearchResult dc in searcher.FindAll()) { outData.AppendLine($"{dc.Properties["CN"][0],-25}: {dc.Path}"); }
+            UI.SearchBanner(DS.searcher.Filter);
+            foreach (SearchResult dc in DS.searcher.FindAll()) { outData.AppendLine($"{dc.Properties["CN"][0],-25}: {dc.Path}"); }
 
             return outData.ToString();
         }

@@ -13,7 +13,7 @@ namespace Coeus
             UI.Banner();
 
             while(true) {
-                Write($"{Prompt}");
+                Write($"{Misc.Prompt}");
 
                 UI.Action(ReadLine());
             }

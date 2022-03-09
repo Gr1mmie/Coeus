@@ -20,10 +20,10 @@ namespace Coeus.Commands
 
             StringBuilder outData = new StringBuilder();
 
-            UI.FilterSet(searcher, "(ObjectCategory=groupPolicyContainer)", scope);
+            UI.FilterSet(DS.searcher, "(ObjectCategory=groupPolicyContainer)", DS.scope);
 
             UI.SearchBanner("(ObjectCategory=groupPolicyContainer)");
-            foreach (SearchResult gpo in searcher.FindAll()) { outData.AppendLine($"{gpo.Path}"); }
+            foreach (SearchResult gpo in DS.searcher.FindAll()) { outData.AppendLine($"{gpo.Path}"); }
 
             return outData.ToString();
         }

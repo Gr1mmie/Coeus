@@ -28,11 +28,11 @@ namespace Coeus.Commands
             else { OSSearch = false; }
 
             StringBuilder outData = new StringBuilder();
-            outData.AppendLine($"[*] Returning all computer objects in {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, "(objectclass=computer)", scope);
+            outData.AppendLine($"[*] Returning all computer objects in {DomainUtils.CurrentDomain(DS.searcher)} domain");
+            UI.FilterSet(DS.searcher, "(objectclass=computer)", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
-            foreach (SearchResult group in searcher.FindAll()) {
+            UI.SearchBanner(DS.searcher.Filter);
+            foreach (SearchResult group in DS.searcher.FindAll()) {
                 count += 1;
                 cProp = group.Properties;
                 outData.AppendLine($"{cProp["CN"][0],-25}: {group.Path}");

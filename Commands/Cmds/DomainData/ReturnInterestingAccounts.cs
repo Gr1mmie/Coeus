@@ -23,13 +23,13 @@ namespace Coeus.Commands
 
             string CNs = null;
 
-            foreach (string cn in interestingCNs) { CNs += $"(cn={cn})"; }
+            foreach (string cn in Arrays.interestingCNs) { CNs += $"(cn={cn})"; }
 
-            outData.AppendLine($"[*] Locating potentially interesting accounts in the {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, $"(&(samaccounttype=805306368)(|{CNs}))", scope);
+            outData.AppendLine($"[*] Locating potentially interesting accounts in the {DomainUtils.CurrentDomain(DS.searcher)} domain");
+            UI.FilterSet(DS.searcher, $"(&(samaccounttype=805306368)(|{CNs}))", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
-            foreach (SearchResult acc in searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
+            UI.SearchBanner(DS.searcher.Filter);
+            foreach (SearchResult acc in DS.searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Path}"); }
 
             return outData.ToString();
         }

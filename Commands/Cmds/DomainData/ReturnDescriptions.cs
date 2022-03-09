@@ -28,12 +28,12 @@ namespace Coeus.Commands
 
             StringBuilder outData = new StringBuilder();
 
-            outData.AppendLine($"[*] Searching decriptions in {DomainUtils.CurrentDomain(searcher)} domain matching '{desc}'");
-            UI.FilterSet(searcher, $"(&(objectclass=user)(description={desc}))", scope);
+            outData.AppendLine($"[*] Searching decriptions in {DomainUtils.CurrentDomain(DS.searcher)} domain matching '{desc}'");
+            UI.FilterSet(DS.searcher, $"(&(objectclass=user)(description={desc}))", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
-            outData.AppendLine($"[*] Search Filter: {searcher.Filter}\n[*] Search Results:\n");
-            foreach (SearchResult acc in searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Properties["Description"][0]}"); }
+            UI.SearchBanner(DS.searcher.Filter);
+            outData.AppendLine($"[*] Search Filter: {DS.searcher.Filter}\n[*] Search Results:\n");
+            foreach (SearchResult acc in DS.searcher.FindAll()) { outData.AppendLine($"{acc.Properties["CN"][0],-25}: {acc.Properties["Description"][0]}"); }
 
             return outData.ToString();
         }

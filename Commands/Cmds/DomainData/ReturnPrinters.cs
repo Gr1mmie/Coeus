@@ -22,12 +22,12 @@ namespace Coeus.Commands
 
             StringBuilder outData = new StringBuilder();
 
-            outData.AppendLine($"[*] Searching for printers in {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, "(objectCategory=printQueue)", scope);
+            outData.AppendLine($"[*] Searching for printers in {DomainUtils.CurrentDomain(DS.searcher)} domain");
+            UI.FilterSet(DS.searcher, "(objectCategory=printQueue)", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
-            outData.AppendLine($"[*] Search Filter: {searcher.Filter}\n[*] Search Results:\n");
-            foreach (SearchResult printer in searcher.FindAll()) { outData.AppendLine($"{printer.Path}"); }
+            UI.SearchBanner(DS.searcher.Filter);
+            outData.AppendLine($"[*] Search Filter: {DS.searcher.Filter}\n[*] Search Results:\n");
+            foreach (SearchResult printer in DS.searcher.FindAll()) { outData.AppendLine($"{printer.Path}"); }
 
 
             return outData.ToString();

@@ -20,18 +20,18 @@ namespace Coeus.Commands
         {
             StringBuilder outData = new StringBuilder();
 
-            outData.AppendLine($"[*] Enumerating {DomainUtils.CurrentDomain(searcher)} password policies\n");
+            outData.AppendLine($"[*] Enumerating {DomainUtils.CurrentDomain(DS.searcher)} password policies\n");
 
-            entry.Path = $"LDAP://DC={DomainUtils.CurrentDomain(searcher)},DC=local";
+            DS.entry.Path = $"LDAP://DC={DomainUtils.CurrentDomain(DS.searcher)},DC=local";
 
-            var minPwdAge = DomainUtils.ConvertLargeIntegerToInt64(entry.Properties["minPwdAge"][0]);
-            var maxPwdAge = DomainUtils.ConvertLargeIntegerToInt64(entry.Properties["maxPwdAge"][0]);
-            var minPwdLen = entry.Properties["minPwdLength"][0];
-            var pwdProp = entry.Properties["pwdProperties"][0];
-            var pwdHistoryLen = entry.Properties["pwdHistoryLength"][0];
-            var lockoutDuration = DomainUtils.ConvertLargeIntegerToInt64(entry.Properties["lockoutDuration"][0]);
-            var lockoutObsWin = DomainUtils.ConvertLargeIntegerToInt64(entry.Properties["lockoutObservationWindow"][0]);
-            var lockoutThreshold = entry.Properties["lockoutThreshold"][0];
+            var minPwdAge = DomainUtils.ConvertLargeIntegerToInt64(DS.entry.Properties["minPwdAge"][0]);
+            var maxPwdAge = DomainUtils.ConvertLargeIntegerToInt64(DS.entry.Properties["maxPwdAge"][0]);
+            var minPwdLen = DS.entry.Properties["minPwdLength"][0];
+            var pwdProp = DS.entry.Properties["pwdProperties"][0];
+            var pwdHistoryLen = DS.entry.Properties["pwdHistoryLength"][0];
+            var lockoutDuration = DomainUtils.ConvertLargeIntegerToInt64(DS.entry.Properties["lockoutDuration"][0]);
+            var lockoutObsWin = DomainUtils.ConvertLargeIntegerToInt64(DS.entry.Properties["lockoutObservationWindow"][0]);
+            var lockoutThreshold = DS.entry.Properties["lockoutThreshold"][0];
 
             outData.AppendLine($"minPwdAge (days): {(TimeSpan.FromTicks(-minPwdAge)).ToString().Split('.')[0],-25}\n" +
                 $"maxPwdAge (days): {(TimeSpan.FromTicks(-maxPwdAge)).ToString().Split('.')[0],-25}\n" +

@@ -44,20 +44,20 @@ namespace Coeus.Commands
 
             StringBuilder outData = new StringBuilder();
 
-            outData.AppendLine($"[*] Returning all user objects in {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, $"(&(samaccounttype=805306368)(objectcategory=person){addFilter})", scope);
+            outData.AppendLine($"[*] Returning all user objects in {DomainUtils.CurrentDomain(DS.searcher)} domain");
+            UI.FilterSet(DS.searcher, $"(&(samaccounttype=805306368)(objectcategory=person){addFilter})", DS.scope);
 
-            UI.SearchBanner(searcher.Filter);
+            UI.SearchBanner(DS.searcher.Filter);
 
             if (NonDefaultUsers) {
-                foreach (SearchResult user in searcher.FindAll()) {
-                    if (!defaultUsers.Any(user.Properties["CN"][0].ToString().Contains)) {
+                foreach (SearchResult user in DS.searcher.FindAll()) {
+                    if (!Arrays.defaultUsers.Any(user.Properties["CN"][0].ToString().Contains)) {
                         count += 1;
                         outData.AppendLine($"{user.Properties["CN"][0],-25} : {user.Path} ");
                     }
                 }
             } else {
-                foreach (SearchResult user in searcher.FindAll()) {
+                foreach (SearchResult user in DS.searcher.FindAll()) {
                     count += 1;
                     outData.AppendLine($"{user.Properties["CN"][0],-25}: {user.Path}");
                 }

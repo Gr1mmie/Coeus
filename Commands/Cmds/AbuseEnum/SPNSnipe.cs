@@ -33,9 +33,9 @@ namespace Coeus.Commands.Cmds.AbuseEnum
 
                 StringBuilder outData = new StringBuilder();
 
-                UI.FilterSet(searcher, $"(&(cn={Computer})({Include}(servicePrincipalName=*)))", scope);
+                UI.FilterSet(DS.searcher, $"(&(cn={Computer})({Include}(servicePrincipalName=*)))", DS.scope);
 
-                var cObj = searcher.FindAll();
+                var cObj = DS.searcher.FindAll();
                 foreach (SearchResult obj in cObj) {
                     var cEntry = obj.GetDirectoryEntry();
                     outData.AppendLine(cEntry.Name.Split('=')[1]);
