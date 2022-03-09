@@ -8,8 +8,8 @@ Catch my talk featuring Coeus here! (add link pls)
 * Give option to set/change SearchScope 
 * Users
   * ~~no passwd req'd~~ 
-* ObjPropery
-  * parse SID/GUID
+* ~~ObjPropery~~
+  * ~~parse SID/GUID~~
 * LAPSSweep
 * ACL Enum
   * https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf 
