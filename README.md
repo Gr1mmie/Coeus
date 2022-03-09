@@ -6,7 +6,7 @@ Catch my talk featuring Coeus here! (add link pls)
 
 ## To-Do
 * Give option to set/change SearchScope 
-* Users
+* ~~Users~~
   * ~~no passwd req'd~~ 
 * ~~ObjPropery~~
   * ~~parse SID/GUID~~
@@ -14,7 +14,7 @@ Catch my talk featuring Coeus here! (add link pls)
 * ACL Enum
   * https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf 
   * takes obj as param 
-* GPO Enum
+* ~~GPO Enum~~
   * ~~fetch all~~
   * ~~all properties~~
   * ~~specific properties~~
