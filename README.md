@@ -19,8 +19,8 @@ Catch my talk featuring Coeus here! (add link pls)
   * ~~all properties~~
   * ~~specific properties~~
   * ~~return names~~
-  * correctly return byte[] entries (objGUID)
+  * ~~correctly return byte[] entries (objGUID)~~
 * DCSync
   * search for DS-Replication-Get-Changes, DS-Replication-Get-Changes-All, DS-Replication-Get-Changes-In-Filtered-Set  
-* Misc
-  * create method to convert and return SID/GIUD entries in extensions 
+* ~~Misc~~
+  * ~~create method to convert and return SID/GIUD entries in extensions~~ 
