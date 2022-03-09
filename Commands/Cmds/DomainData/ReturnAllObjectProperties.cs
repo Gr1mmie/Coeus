@@ -10,7 +10,6 @@ namespace Coeus.Commands
 {
     public class ReturnAllObjectProperties : Command
     {
-        private string obj { get; set; }
         public override string CommandName => "AllObjProperties";
         public override string CommandDesc => "Return all properties for a specified object";
 
@@ -21,7 +20,7 @@ namespace Coeus.Commands
         {
             if (args is null) { throw new CoeusException("[-] AllObjProperties [obj cn]"); }
 
-            obj = args[1];
+            string obj = args[1].Replace('.', ' ');
 
             StringBuilder outData = new StringBuilder();
 

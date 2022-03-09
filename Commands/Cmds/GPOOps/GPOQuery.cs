@@ -14,38 +14,47 @@ namespace Coeus.Commands
         public override string CommandName => "GPOQuery";
         public override string CommandDesc => "Return data on a specified GPO";
 
-        public override string CommandUsage => "[*] Usage: GPOQuery [GPO Id] <GPO Prop>" +
-            "\n\t GPO Id - GPO id to query. Can be found using GPOHunter" +
-            "\n\t GPO Prop - GPO property to return";
-        public override string CommandExec(string[] args) {
+        public override string CommandUsage => "[*] Usage: GPOQuery [GPO Id] <GPO Prop>";
+        public override string CommandExec(string[] args)
+        {
+            if (args is null || args.Length > 3) { throw new CoeusException("[*] Usage: GPOQuery [GPO Id] <GPO Prop>\n"); }
+
+            string Prop = null;
+            string GPOId = null;
+            ResultPropertyValueCollection cProp = null;
+
+            if (args.Length == 3) {
+                GPOId = args[1];
+                Prop = args[2];
+            } else { GPOId = args[1]; }
+
+
             try {
-
-                string Prop = null;
-                string GPOId = null;
-
-                if (args is null || args.Length > 3) { throw new CoeusException("[*] Usage: GPOQuery [GPO Id] <GPO Prop>\n"); }
-                if (args.Length == 3) {
-                    GPOId = args[1];
-                    Prop = args[2];
-                } else { GPOId = args[1]; }
 
                 StringBuilder outData = new StringBuilder();
 
                 UI.FilterSet(searcher, $"(&(ObjectCategory=groupPolicyContainer)(cn={'{' + GPOId + '}'}))", scope);
 
-                UI.SearchBanner("(ObjectCategory=groupPolicyContainer)");
+                UI.SearchBanner($"(&(ObjectCategory = groupPolicyContainer)(cn={ '{' + GPOId + '}'}))");
                 if (Prop == null) {
                     foreach (var GPOProp in searcher.FindOne().Properties.PropertyNames) {
-                        outData.AppendLine($"{GPOProp,-30}: {searcher.FindOne().Properties[$"{GPOProp}"][0]}");
+                        cProp = searcher.FindOne().Properties[$"{GPOProp}"];
+                        if (GPOProp.ToString() == "objectguid") {
+                            outData.AppendLine($"{GPOProp,-30}: {DomainUtils.ConvertToGUID(cProp)}");
+                        } else { outData.AppendLine($"{GPOProp,-30}: {cProp[0]}"); }
                     }
                 } else if (Prop != null && Prop != "") {
                     foreach (SearchResult GPOProp in searcher.FindAll()) {
-                        outData.AppendLine($"{GPOProp.Properties[$"{Prop}"][0]}");
+                        cProp = GPOProp.Properties[$"{Prop}"];
+                        if (Prop == "objectguid") {
+                            outData.AppendLine($"{DomainUtils.ConvertToGUID(cProp)}");
+                        } else { outData.AppendLine($"{cProp[0]}"); }
                     }
                 }
 
                 return outData.ToString();
-            } catch (System.IndexOutOfRangeException) { throw new CoeusException($"[-] Property doesn't exist\n"); }
+            }
+            catch (System.IndexOutOfRangeException) { throw new CoeusException($"[-] Property {Prop} doesn't exist\n"); }
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Coeus.Commands
 {
     public class ReturnAllComputerObjects : Command
     {
-        private bool OSSearch { get; set; }
         public override string CommandName => "AllComputers";
 
         public override string CommandDesc => "Return all computer objects";
@@ -22,6 +21,7 @@ namespace Coeus.Commands
         public override string CommandExec(string[] args)
         {
             int count = 0;
+            bool OSSearch;
             ResultPropertyCollection cProp = null;
 
             if (args != null && args.Any("OS".Contains)) { OSSearch = true; }
@@ -32,13 +32,11 @@ namespace Coeus.Commands
             UI.FilterSet(searcher, "(objectclass=computer)", scope);
 
             UI.SearchBanner(searcher.Filter);
-            foreach (SearchResult group in searcher.FindAll())
-            {
+            foreach (SearchResult group in searcher.FindAll()) {
                 count += 1;
                 cProp = group.Properties;
                 outData.AppendLine($"{cProp["CN"][0],-25}: {group.Path}");
-                if (OSSearch && (cProp["OperatingSystem"].Count == 1))
-                {
+                if (OSSearch && (cProp["OperatingSystem"].Count == 1)) {
                     outData.AppendLine($"\tOS: {cProp["OperatingSystem"][0]}\n\tVer: {cProp["OperatingSystemVersion"][0]}");
                 }
             }

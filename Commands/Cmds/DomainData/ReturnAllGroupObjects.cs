@@ -28,7 +28,7 @@ namespace Coeus.Commands
 
             if (args != null) {
                 if (args.Length > 3) { throw new CoeusException("[*] Usage: AllGroups <group obj cn> <nondefaultGroups>\n"); }
-                if ((args.Length == 2 || args.Length == 3) && args[1].ToLower() != "ndg") { addFilter = $"(cn={args[1]})"; }
+                if ((args.Length == 2 || args.Length == 3) && args[1].ToLower() != "ndg") { addFilter = $"(cn={args[1].Replace('.',' ')})"; }
                 if (args.Any("ndG".Contains)) { NonDefaultGroups = true; }
             }
 
@@ -37,21 +37,15 @@ namespace Coeus.Commands
             UI.FilterSet(searcher, $"(&(samaccounttype=268435456){addFilter})", scope);
 
             UI.SearchBanner(searcher.Filter);
-            if (NonDefaultGroups)
-            {
-                foreach (SearchResult group in searcher.FindAll())
-                {
-                    if (!(defaultGroups.Any(group.Properties["CN"][0].ToString().Contains)))
-                    {
+            if (NonDefaultGroups) {
+                foreach (SearchResult group in searcher.FindAll()) {
+                    if (!(defaultGroups.Any(group.Properties["CN"][0].ToString().Contains))) {
                         count += 1;
                         outData.AppendLine($"{group.Properties["CN"][0],-25} : {group.Path} ");
                     }
                 }
-            }
-            else
-            {
-                foreach (SearchResult group in searcher.FindAll())
-                {
+            } else {
+                foreach (SearchResult group in searcher.FindAll()) {
                     count += 1;
                     outData.AppendLine($"{group.Properties["CN"][0],-40} : {group.Path}");
                 }

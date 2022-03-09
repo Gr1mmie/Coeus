@@ -21,18 +21,16 @@ namespace Coeus.Commands
 
         public override string CommandExec(string[] args) {
 
-            string ObjName = null;
-            string ObjProp = null;
+            if (args is null || args.Length != 3) { throw new CoeusException($"[*] Usage ObjProperty [obj name] [prop name]"); }
+
+            string ObjName = args[1];
+            string ObjProp = args[2];
+            ResultPropertyValueCollection cProp = null;
 
             try {
 
-                if (args is null || args.Length != 3) { throw new CoeusException($"[*] Usage ObjProperty [obj name] [prop name]"); }
                 StringBuilder outData = new StringBuilder();
-
-                ObjName = args[1];
-                ObjProp = args[2];
-                ResultPropertyValueCollection cProp = null;
-
+                
                 UI.FilterSet(searcher, $"(cn={ObjName})", scope);
 
                 UI.SearchBanner(searcher.Filter);

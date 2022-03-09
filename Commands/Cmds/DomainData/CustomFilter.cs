@@ -10,7 +10,6 @@ namespace Coeus.Commands
 {
     public class CustomFilter : Command
     {
-        private string Filter { get; set; }
         public override string CommandName => "CustomFilter";
 
         public override string CommandDesc => "Query the domain using a custom filter";
@@ -21,7 +20,7 @@ namespace Coeus.Commands
         {
             StringBuilder outData = new StringBuilder();
 
-            Filter = args[1];
+            string Filter = args[1];
 
             UI.FilterSet(searcher, Filter, scope);
 

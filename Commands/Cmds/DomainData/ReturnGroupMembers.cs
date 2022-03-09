@@ -1,10 +1,8 @@
 ﻿using System.Text;
 using System.DirectoryServices;
 
-using Coeus.Utils;
 using Coeus.Models;
 
-using static Coeus.Utils.Extensions;
 using static Coeus.Models.Data.Data;
 
 namespace Coeus.Commands
@@ -18,15 +16,20 @@ namespace Coeus.Commands
         public override string CommandUsage => "[*] Usage: GroupMembers [group name]" +
             "\n\t group name - group name to return members of";
 
-        public override string CommandExec(string[] args)
-        {
+        public override string CommandExec(string[] args) {
+            string group = "";
+
+            if (args != null && args.Length == 2) { group = $"{args[1].Replace('.', ' ')}"; }
+            else { throw new CoeusException("[-] No group supplied\n"); }
+
             StringBuilder outData = new StringBuilder();
 
-            outData.AppendLine($"[*] Returning all group objects in {DomainUtils.CurrentDomain(searcher)} domain");
-            UI.FilterSet(searcher, "(&(samaccounttype=268435456))", scope);
+            string domainPath = RootDSE.Properties["defaultNamingContext"][0].ToString();
 
-            UI.SearchBanner(searcher.Filter);
-            foreach (SearchResult group in searcher.FindAll()) { outData.AppendLine($"{group.Properties["CN"][0],-25}: {group.Path}"); }
+            DirectoryEntry groupEntry = new DirectoryEntry($"LDAP://CN={group},CN=Users,{domainPath}");
+
+            foreach (var member in groupEntry.Properties["Member"]) { outData.AppendLine(member.ToString()); }
+
 
             return outData.ToString();
         }
