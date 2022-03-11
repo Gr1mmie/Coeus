@@ -42,4 +42,4 @@ Open .sln in Visual Studio and build
   * Allow for operator to authenticate into a domain as to not drop Coeus to disk  
 
 ## Disclaimer
-I am not responsible for actions taken by users of Coeus. Coeus was released for educational purposes only 
+I am not responsible for actions taken by users of Coeus. Coeus was released solely for educational and ethical purposes.
