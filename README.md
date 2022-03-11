@@ -4,7 +4,7 @@ Coeus is an ADSI based Situational Awareness toolkit for domain environments wit
 
 Catch my talk featuring Coeus here! (add link pls)
 
-[slides](https://github.com/Gr1mmie/Presentations/blob/main/DC615/Domain%20ADventuring%20w_%20ADSI.pdf)
+[Slides!](https://github.com/Gr1mmie/Presentations/blob/main/DC615/Domain%20ADventuring%20w_%20ADSI.pdf)
 
 ## Usage
 Coeus is an interactive console app, meaning executing the binary drops users into a prompt. Use `commands` to view all available commands like so: 
