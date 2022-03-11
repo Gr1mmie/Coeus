@@ -13,7 +13,8 @@ Catch my talk featuring Coeus here! (add link pls)
 * LAPSSweep
 * ACL Enum
   * https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf 
-  * takes obj as param 
+  * ~~takes obj as param~~
+  * allow for the specifying of Identity Reference 
 * ~~GPO Enum~~
   * ~~fetch all~~
   * ~~all properties~~
