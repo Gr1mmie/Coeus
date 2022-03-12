@@ -53,10 +53,8 @@ namespace Coeus.Commands
             UI.FilterSet(DS.searcher, $"(cn={CN})", DS.scope);
             ActiveDirectorySecurity objACL = DS.searcher.FindOne().GetDirectoryEntry().ObjectSecurity;
 
-            foreach (ActiveDirectoryAccessRule ACE in objACL.GetAccessRules(true, true, typeof(NTAccount)))
-            {
-                if (ADRights != Arrays.ADRights || AllRights)
-                {
+            foreach (ActiveDirectoryAccessRule ACE in objACL.GetAccessRules(true, true, typeof(NTAccount))) {
+                if (ADRights != Arrays.ADRights || AllRights) {
                     if (ADRights.Any(ACE.ActiveDirectoryRights.ToString().Contains) && ct != ControlType.Inactive)
                     {
                         outData = ACLUtils.returnACEData(outData, ACE, ct);

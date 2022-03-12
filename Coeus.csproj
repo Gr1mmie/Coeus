@@ -59,6 +59,7 @@
     <Compile Include="Commands\Cmds\DomainData\ReturnDomain.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnDomainControllers.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnExchange.cs" />
+    <Compile Include="Commands\Cmds\DomainData\ReturnForestData.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnGroupMembers.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnInterestingAccounts.cs" />
     <Compile Include="Commands\Cmds\DomainData\ReturnObjProperty.cs" />
