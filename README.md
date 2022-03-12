@@ -20,14 +20,14 @@ To get help for any command, use the `help` util:
 * Returns information on the domain and forest including domain  
 * Returns information on the RootDSE 
 * Searches for accounts with descriptions
-* Returns "interesting accounts" (based ona a string array in Models/Data.cs)
+* Returns "interesting accounts" (based ona string array in Models/Data.cs)
 * Query object properties
 * Return domain password policies 
-* Returns machine accounts with SPNs assigned
+* Returns machine accounts with SPNs assigned and their respective SPNs
 * Searches for potentially AS-REP/Kerberoastable accounts
 * Searcher for machines potentially vulnerable to delegation attacks (constrained, unconstrained, ~~resource based, coming soon~~)
 * Query GPOs
-* Query object ACL 
+* Query object ACL
 
 ## Compile Instructions
 Open .sln in Visual Studio and build
