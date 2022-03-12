@@ -25,7 +25,7 @@ To get help for any command, use the `help` util:
 * Return domain password policies 
 * Returns machine accounts with SPNs assigned
 * Searches for potentially AS-REP/Kerberoastable accounts
-* Searcher for machines potentially vulnerable to delegation attacks (constrained, unconstrained, ~~resouce based, coming soon~~)
+* Searcher for machines potentially vulnerable to delegation attacks (constrained, unconstrained, ~~resource based, coming soon~~)
 * Query GPOs
 * Query object ACL 
 
