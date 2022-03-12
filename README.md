@@ -15,6 +15,19 @@ To get help for any command, use the `help` util:
 
 <img width="477" alt="image" src="https://user-images.githubusercontent.com/57014148/157975611-fee2850d-694c-438b-af68-d7f984d61507.png">
 
+## Features
+* Enumerate users, groups (and group memberships), and computers on a domain
+* Returns information on the domain and forest including domain  
+* Returns information on the RootDSE 
+* Searches for accounts with descriptions
+* Returns "interesting accounts" (based ona a string array in Models/Data.cs)
+* Query object properties
+* Return domain password policies 
+* Returns machine accounts with SPNs assigned
+* Searches for potentially AS-REP/Kerberoastable accounts
+* Searcher for machines potentially vulnerable to delegation attacks (constrained, unconstrained, ~~resouce based, coming soon~~)
+* Query GPOs
+* Query object ACL 
 
 ## Compile Instructions
 Open .sln in Visual Studio and build
