@@ -39,6 +39,9 @@ Open .sln in Visual Studio and build
 * ~~ObjPropery~~
   * ~~parse SID/GUID~~
 * LAPSSweep
+* RoastHunter
+  * if machine w/ SPN is found, attempt to determine enc type (msDS-SupportedEncryptionTypes) and return that
+  * use Coeus to locate potentially kerberoastable machines and fetch neccesary info to pass to SnipeRoast AtlasUtil 
 * ACL Enum
   * https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf 
   * ~~takes obj as param~~
